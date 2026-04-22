@@ -6,7 +6,7 @@ class Intnum:
         self.dof = dof
         self.error_aceptable = 0.00001
 
-    def funcion_t(self, x):
+    def funt(self, x):
         term1 = math.gamma((self.dof + 1) / 2)
         term2 = (math.sqrt(self.dof * math.pi) * math.gamma(self.dof / 2))
         constante = term1 / term2
@@ -16,21 +16,21 @@ class Intnum:
         
         return constante * (base ** exponente)
 
-    def calcular_integral(self):
+    def calint(self):
         num_seg = 10
         resant = 0.0
         error = 1.0
         
         while error > self.error_aceptable:
             W = self.x / num_seg
-            sumatoria = self.funcion_t(0) + self.funcion_t(self.x)
+            sumatoria = self.funt(0) + self.funt(self.x)
             
             for i in range(1, num_seg):
                 valor_x = i * W
                 if i % 2 == 0:
-                    sumatoria += 2 * self.funcion_t(valor_x)
+                    sumatoria += 2 * self.funt(valor_x)
                 else:
-                    sumatoria += 4 * self.funcion_t(valor_x)
+                    sumatoria += 4 * self.funt(valor_x)
             
             resact = (W / 3) * sumatoria
             
