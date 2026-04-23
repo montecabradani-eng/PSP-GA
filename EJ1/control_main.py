@@ -6,7 +6,7 @@ class MenuPrincipal(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
         
-        uic.loadUi("EJ1/menu_principal (1).ui", self)
+        uic.loadUi("EJ1/ui1/menu_principal (1).ui", self)
 
         self.pushButton.clicked.connect(self.clical)
 
@@ -35,9 +35,14 @@ class MenuPrincipal(QtWidgets.QMainWindow):
         # sacar los resultados
 
         self.lineEdit_2.setText(str(round(ejer1.b0, 4)))
+        self.lineEdit_2.setStyleSheet("color: black;")
         self.lineEdit_3.setText(str(round(ejer1.b1, 4)))
+        self.lineEdit_3.setStyleSheet("color: black;")
         self.lineEdit_4.setText(str(round(ejer1.r2, 4)))
+        self.lineEdit_4.setStyleSheet("color: black;")
         self.lineEdit_5.setText(str(round(ejer1.r_xy, 4)))
+        self.lineEdit_5.setStyleSheet("color: black;")
         self.lineEdit_6.setText(str(round(ejer1.yk, 4)))
+        self.lineEdit_6.setStyleSheet("color: black;")
         # llena las lineas de texto del programa con lo que corresponde en b0, b1, rxy, r2 y así. El round es para reondear
         # y aquí indico que son para 4 decimales

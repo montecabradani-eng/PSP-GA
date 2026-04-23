@@ -4,7 +4,7 @@ from EJ2.psp2 import Intnum
 class ControlPsp2(QtWidgets.QDialog):
     def __init__(self):
         super().__init__()
-        uic.loadUi("EJ2/simpson.ui", self)
+        uic.loadUi("Ej2/ui2/simpson.ui", self)
 
         self.pushButton.clicked.connect(self.clic)
 
