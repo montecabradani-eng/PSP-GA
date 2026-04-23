@@ -7,11 +7,11 @@ class InversaPsp3:
         
         self.x = 1.0
         self.d = 0.5
-        # Error más pequeño para mayor precisión (7 decimales)
-        self.error = 0.0000001 
+        self.error = 0.0000001
+        #el numéro tan grande aquí es para que las x sean más precisas, mientras más 0 
+        # más preciso pero también con muchos ceros se me traba 
 
-    def curva_t(self, v_x):
-        # Cálculos de la distribución t
+    def ct(self, v_x):
         t1 = math.gamma((self.grados + 1) / 2)
         t2 = math.sqrt(self.grados * math.pi) * math.gamma(self.grados / 2)
         c = t1 / t2
@@ -21,18 +21,17 @@ class InversaPsp3:
         return c * (b ** e)
 
     def simpson(self, x_fin):
-        # Aumentamos n a 1000 para que la integral sea mucho más exacta
         n = 1000
         h = x_fin / n
         
-        s = self.curva_t(0) + self.curva_t(x_fin)
+        s = self.ct(0) + self.ct(x_fin)
 
         for i in range(1, n):
             px = i * h
             if i % 2 == 0:
-                s = s + 2 * self.curva_t(px)
+                s = s + 2 * self.ct(px)
             else:
-                s = s + 4 * self.curva_t(px)
+                s = s + 4 * self.ct(px)
 
         return (h / 3) * s
 
@@ -44,7 +43,6 @@ class InversaPsp3:
         else: 
             self.siga = -1
 
-        # Bucle de búsqueda de X
         while abs(self.pact - self.p_dest) > self.error:
             if self.pact < self.p_dest:
                 self.x = self.x + self.d
