@@ -4,6 +4,7 @@ from PyQt6 import QtWidgets, uic
 from EJ1.control_main import MenuPrincipal
 from EJ2.control_psp2 import ControlPsp2
 from EJ3.control_psp3 import ControlPsp3
+from EJ4.control_psp4 import ControlPsp4
 
 class SelectorMenu(QtWidgets.QDialog):
     def __init__(self):
@@ -14,6 +15,7 @@ class SelectorMenu(QtWidgets.QDialog):
         self.pushButton.clicked.connect(self.abrir_ejercicio_1)
         self.pushButton_2.clicked.connect(self.abrir_ejercicio_2)
         self.pushButton_3.clicked.connect(self.abrir_ejercicio_3)
+        self.pushButton_4.clicked.connect(self.abrir_ejercicio_4)
         #como para abrir el ejercicio es con un push button, la funcion que se usa es el clicked.connect
 
     def abrir_ejercicio_1(self):
@@ -27,6 +29,10 @@ class SelectorMenu(QtWidgets.QDialog):
     def abrir_ejercicio_3(self):
         self.ventana3 = ControlPsp3()
         self.ventana3.show()
+        
+    def abrir_ejercicio_4(self):
+        self.ventana4 = ControlPsp4()
+        self.ventana4.show()
         
     #estas funciones son fáciles, solo anexo un nombre al archivo correspondiente a psp 1 y 2, y al final pongo el
     #.show para que salte esa misma ventana
