@@ -4,7 +4,7 @@ class Intnum:
     def __init__(self, x, dof):
         self.x = x
         self.dof = dof
-        self.error_aceptable = 0.00001
+        self.error_aceptable = 0.00000001
 
     def funt(self, x):
         term1 = math.gamma((self.dof + 1) / 2)
@@ -20,6 +20,7 @@ class Intnum:
         num_seg = 10
         resant = 0.0
         error = 1.0
+        resact = 0.0
         
         while error > self.error_aceptable:
             W = self.x / num_seg
@@ -33,10 +34,10 @@ class Intnum:
                     sumatoria += 4 * self.funt(valor_x)
             
             resact = (W / 3) * sumatoria
-            
             error = abs(resact - resant)
             
-            resant = resact
-            num_seg *= 2 
+            if error > self.error_aceptable:
+                resant = resact
+                num_seg *= 2 
             
-        return round(resact, 5)
+        return resact

@@ -1,5 +1,6 @@
 import math
 from EJ1.psp1 import Ej1
+from EJ2.psp2 import Intnum
 from EJ3.psp3 import InversaPsp3
 
 def calcular_psp4(datos_x, datos_y, x_k):
@@ -12,6 +13,11 @@ def calcular_psp4(datos_x, datos_y, x_k):
     reg = Ej1(datos_x, datos_y, x_k)
     reg.calcular()
     b0, b1 = reg.b0, reg.b1
+    r_xy = reg.r_xy
+    
+    x_val = (abs(r_xy) * math.sqrt(gl)) / math.sqrt(1 - r_xy**2)
+    p = Intnum(x_val, gl).calint()
+    tail_area = 1 - 2 * p
     
     yk = b0 + (b1 * x_k)
     
@@ -36,5 +42,8 @@ def calcular_psp4(datos_x, datos_y, x_k):
         "valor_t": t,
         "rango": rango,
         "lpi": yk - rango,
-        "upi": yk + rango
+        "upi": yk + rango,
+        "tail_area": tail_area,
+        "r_xy": r_xy,
+        "r2": r_xy**2
     }

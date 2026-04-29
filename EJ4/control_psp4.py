@@ -30,3 +30,4 @@ class ControlPsp4(QtWidgets.QDialog):
             self.lineEdit_3.setText(str(round(res['rango'], 5)))
             self.lineEdit_4.setText(str(round(res['lpi'], 5)))
             self.lineEdit_5.setText(str(round(res['upi'], 5)))
+            self.lineEdit_6.setText(f"{res['tail_area']:.5e}")
